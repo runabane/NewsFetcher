@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <script src="logic/LogicManager.js"></script>
     <link rel="stylesheet" href="static/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="centerItem margin-top search-box-container">
-        <img src="static/favpng_logo-flower-royalty-free.png" width="100" height="100">
+    <div id="search-bar-placeholder" class="centerItem margin-top search-box-container">
+        <img id="logo-image" src="static/favpng_logo-flower-royalty-free.png" width="100" height="100" alt="">
         <div class="mainText">
             News Finder
         </div>
     </div>
-    <form class="formContainer centerItem margin-bottom">
+    <form id="form-home" class="formContainer centerItem margin-bottom">
         <input type="text">
-        <button type="submit">
+        <button id="submit-button" type="button">
             <span class="material-icons">
                 search
             </span>
@@ -30,5 +29,7 @@
         <div id="de" onclick="getTopHeadline('de')"> DE </div>
     </div>
     <div id="trending-news" class="trending-news-container"></div>
+    <script src="logic/QueryHandler.js"></script>
+    <script src="logic/LogicManager.js"></script>
 </body>
 </html>

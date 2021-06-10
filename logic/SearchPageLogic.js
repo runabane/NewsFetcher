@@ -1,5 +1,3 @@
-import {queryCall} from "LogicManager.js";
-
 const getNewsFromSearching = async () => {
     let queryText = document.getElementById("search-bar-input").value;
     let queryMap = new Map();
@@ -71,11 +69,11 @@ const dateString = (publishedAt) => {
         timeString = `${dateDiff.getYear} years ago`
     }
 
-    return "";
+    return timeString;
 };
 
 
 
-const form = document.getElementById('search-bar-container');
+const form = document.getElementById("search-bar-container");
 
 form.addEventListener('submit', getNewsFromSearching());

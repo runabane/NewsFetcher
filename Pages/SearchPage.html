@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="../static/styles.css">
     <link rel="stylesheet" href="../static/searchStyle.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="logic/LogicManager.js"></script>
-    <script src="logic/SearchPage.js"></script>
 </head>
 <body>
     <div class="flex-start-item">
@@ -16,7 +14,7 @@
         </div>
         <form class="search-bar-container">
             <input id="search-bar-input" type="text">
-            <button type="submit">
+            <button id ="search-bar-button" type="submit">
                     <span class="material-icons">
                         search
                     </span>
@@ -24,5 +22,7 @@
         </form>
         <div id="search-result"></div>
     </div>
+    <script src="../logic/QueryHandler.js"></script>
+    <script src="../logic/SearchPageLogic.js"></script>
 </body>
 </html>
