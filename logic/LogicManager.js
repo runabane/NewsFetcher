@@ -1,10 +1,17 @@
 window.onload = () => {
-    getTopHeadline(language);
+    let lang = sessionStorage.getItem("lang");
+    if(lang !== null || lang !== "") {
+        language = lang === "en" ? "us" : "de";
+        getTopHeadline(lang, country);
+        return;
+    }
+    getTopHeadline(language, country);
 };
 
-const getTopHeadline = async (language) => {
+const getTopHeadline = async (language, country) => {
+    sessionStorage.setItem("lang", language);
     let queryMap = new Map();
-    queryMap.set("country", language);
+    queryMap.set("country", country);
 
     let query = createQuery(QueryType.TOP_HEADLINE, queryMap);
 
@@ -61,11 +68,23 @@ const createNewsCard = (parent, article, index) => {
     parent.appendChild(div);
 };
 
+const setLanguage = (lang) => {
+    sessionStorage.setItem("lang", lang);
+};
+
 let submitForm = document.getElementById("submit-button");
 if(submitForm !== null){
     submitForm.addEventListener("click", () => {
-        console.log("im here!!");
+        sessionStorage.setItem("input-value", document.getElementById("input-home").value);
         window.location.href = "/NewsFetcher/Pages/SearchPage.html";
     });
 }
+
+window.addEventListener('keydown', (e) => {
+    if(e.key === "Enter"){
+        e.preventDefault();
+        sessionStorage.setItem("input-value", document.getElementById("input-home").value);
+        window.location.href = "/NewsFetcher/Pages/SearchPage.html";
+    }
+});
 

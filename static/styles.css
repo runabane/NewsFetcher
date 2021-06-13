@@ -1,3 +1,10 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .centerItem{
     display: flex;
     flex-direction: row;
@@ -19,19 +26,38 @@ form.formContainer{
     width: 100%;
 }
 
+form.formContainer div{
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    border: 1px lightgray solid;
+    border-radius: 30px;
+}
+
 form.formContainer button{
     width: 50px;
     height: 56px;
     cursor: pointer;
+    position: absolute;
+    padding-right: 7%;
+    right: 0;
+    background: none;
+    border: none;
 }
 
 form.formContainer input[type=text]{
     width: 100%;
+    padding-left: 30px;
     max-width: 600px;
     min-width: 100px;
+    font-weight: 300;
     height: 50px;
-    font-size: 30px;
+    font-size: 25px;
     font-family: Roboto, sans-serif;
+    border: none;
+    border-radius: 90px;
 }
 
 form.formContainer span{
@@ -47,12 +73,20 @@ form.formContainer span{
     width: 100%;
 }
 
+.margin-left{
+    margin-left: 15px;
+}
+
 .margin-top{
     margin-top: 50px;
 }
 
 .margin-bottom{
     margin-bottom: 50px;
+}
+
+.margin-right{
+    margin-right: 10px;
 }
 
 .flex-direction-row{
@@ -73,6 +107,7 @@ form.formContainer span{
     margin: 10px;
     cursor: pointer;
     background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sub-card {

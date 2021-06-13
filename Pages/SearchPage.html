@@ -5,23 +5,26 @@
     <title>Search</title>
     <link rel="stylesheet" href="../static/styles.css">
     <link rel="stylesheet" href="../static/searchStyle.css">
+    <link href = "https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700" rel = "stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="flex-start-item">
-        <div class="search-box-container">
+    <div id="search-bar-placeholder" class="flex-start-item search-bar-placeholder">
+        <div id="logo" class="search-box-container">
             <img src="../static/favpng_logo-flower-royalty-free.png" width="80" height="80">
         </div>
-        <form class="search-bar-container">
-            <input id="search-bar-input" type="text">
-            <button id ="search-bar-button" type="submit">
-                    <span class="material-icons">
-                        search
-                    </span>
-            </button>
+        <form id="submit-form" class="search-bar-container">
+            <div id="div-inside-form-search">
+                <input id="search-bar-input" type="text">
+                <button id ="search-bar-button" type="button">
+                        <span class="material-icons">
+                            search
+                        </span>
+                </button>
+            </div>
         </form>
-        <div id="search-result"></div>
     </div>
+    <div id="search-result"></div>
     <script src="../logic/QueryHandler.js"></script>
     <script src="../logic/SearchPageLogic.js"></script>
 </body>

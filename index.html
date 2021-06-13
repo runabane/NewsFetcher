@@ -5,28 +5,30 @@
     <title>Home</title>
     <link rel="stylesheet" href="static/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href = "https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700" rel = "stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div id="search-bar-placeholder" class="centerItem margin-top search-box-container">
         <img id="logo-image" src="static/favpng_logo-flower-royalty-free.png" width="100" height="100" alt="">
-        <div class="mainText">
+        <div class="mainText margin-left">
             News Finder
         </div>
     </div>
     <form id="form-home" class="formContainer centerItem margin-bottom">
-        <input type="text">
-        <button id="submit-button" type="button">
+        <div id="div-inside-form">
+            <input id="input-home" type="text">
+            <button id="submit-button" type="button">
             <span class="material-icons">
                 search
             </span>
-        </button>
+            </button>
+        </div>
     </form>
     <div id="language-container" class="flex-direction-row centerItem language-container">
-        <div id="en" onclick="getTopHeadline('us')"> EN </div>
+        <div id="en" onclick="getTopHeadline('en', 'us')"> EN </div>
         <div> | </div>
-        <div id="de" onclick="getTopHeadline('de')"> DE </div>
+        <div id="de" onclick="getTopHeadline('de', 'de')"> DE </div>
     </div>
     <div id="trending-news" class="trending-news-container"></div>
     <script src="logic/QueryHandler.js"></script>

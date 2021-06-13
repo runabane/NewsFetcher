@@ -6,6 +6,8 @@ const apiKey = "da4646822a65479cba15d2e6a7c13b92";
 
 let language = "de";
 
+let country = "de";
+
 const QueryType = {
     TOP_HEADLINE: "top-headlines",
     EVERYTHING: "everything",
