@@ -1,6 +1,6 @@
 window.onload = () => {
     let lang = sessionStorage.getItem("lang");
-    if(lang !== null || lang !== "") {
+    if(lang !== null && lang !== "") {
         language = lang === "en" ? "us" : "de";
         getTopHeadline(lang, country);
         return;
@@ -22,10 +22,24 @@ const getTopHeadline = async (language, country) => {
 
         if(trendingNews.innerHTML !== null) trendingNews.innerHTML = "";
 
-        jsonValue.articles.map((article, index) => {
-                createNewsCard(trendingNews, article, index);
-            }
-        );
+        if(jsonValue.status === "error"){
+            let alertDiv = document.createElement('div');
+            alertDiv.classList.add("centerItem");
+            alertDiv.classList.add("alert-container");
+            alertDiv.style.marginTop = "5%";
+            alertDiv.style.maxWidth = "50%";
+            alertDiv.style.textAlign = "center";
+            let textNode = document.createTextNode(jsonValue.message);
+            alertDiv.appendChild(textNode);
+            trendingNews.appendChild(alertDiv);
+        }
+
+        if(jsonValue.status === "ok"){
+            jsonValue.articles.map((article, index) => {
+                    createNewsCard(trendingNews, article, index);
+                }
+            );
+        }
         }
     );
 };
@@ -68,9 +82,24 @@ const createNewsCard = (parent, article, index) => {
     parent.appendChild(div);
 };
 
-const setLanguage = (lang) => {
-    sessionStorage.setItem("lang", lang);
-};
+let lang_en = document.getElementById("en-home");
+let lang_de = document.getElementById("de-home");
+
+lang_en.addEventListener('click', () => {
+    sessionStorage.setItem("lang", "en");
+    lang = "en";
+    lang_en.classList.add("language-button-active");
+    lang_de.classList.remove("language-button-active");
+    getTopHeadline('en', 'us');
+});
+
+lang_de.addEventListener('click', () => {
+    sessionStorage.setItem("lang", "de");
+    lang = "de";
+    lang_de.classList.add("language-button-active");
+    lang_en.classList.remove("language-button-active");
+    getTopHeadline('de', 'de');
+});
 
 let submitForm = document.getElementById("submit-button");
 if(submitForm !== null){

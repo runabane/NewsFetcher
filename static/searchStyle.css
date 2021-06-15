@@ -1,3 +1,11 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 .flex-start-item{
     display: flex;
     flex-direction: row;
@@ -21,12 +29,12 @@
 }
 
 form.search-bar-container{
-    width: 100%;
+    display: flex;
     position: relative;
 }
 
 form.search-bar-container div{
-    width: 40%;
+    width: 100%;
     max-width: 600px;
     min-width: 100px;
     display: flex;
@@ -37,6 +45,7 @@ form.search-bar-container div{
 
 form.search-bar-container input[type=text]{
     width: 100%;
+    min-width: 400px;
     height: 40px;
     font-size: 25px;
     font-family: Roboto, sans-serif;
@@ -86,4 +95,7 @@ form.search-bar-container span{
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
  }
 
-
+.language-button-active{
+    color: blue;
+    cursor: default;
+}

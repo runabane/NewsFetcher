@@ -35,6 +35,9 @@ const queryCall = async (action, url) => {
             if (xhttp.status === 200 && xhttp.readyState === 4) {
                 resolve(xhttp.responseText);
             }
+            if(xhttp.status === 429 && xhttp.readyState === 4){
+                resolve(xhttp.responseText);
+            }
         };
         xhttp.send();
     })

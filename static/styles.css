@@ -5,6 +5,14 @@ button:focus {
     outline: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 .centerItem{
     display: flex;
     flex-direction: row;
@@ -137,4 +145,17 @@ div.language-container div{
 div.language-container div:hover{
     color: blue;
     cursor: pointer;
+}
+
+.alert-container{
+    height: 150px;
+    letter-spacing: 2px;
+    border: lightgray 1px solid;
+    border-radius: 9px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.language-button-active{
+    color: blue;
+    cursor: default;
 }

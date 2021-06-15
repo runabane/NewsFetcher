@@ -1,15 +1,18 @@
+let lang = "de";
+
 window.onload = () => {
     let input_home = sessionStorage.getItem("input-value");
     let lang_home = sessionStorage.getItem("lang");
-    if(lang_home !== null || lang_home !== ""){
+    if(lang_home !== null && lang_home !== "null" && lang_home !== ""){
+        console.log("lang_home : " + lang_home);
+        lang = lang_home;
         language = lang_home;
     }
-    if(input_home !== null || input_home !== ""){
+    if(input_home !== null && input_home !== ""){
         document.getElementById("search-bar-input").value = input_home;
         getNewsFromSearching();
     }
 };
-
 
 const getNewsFromSearching = async () => {
     let queryText = document.getElementById("search-bar-input").value;
@@ -24,35 +27,50 @@ const getNewsFromSearching = async () => {
     let stringDate = `${date.getFullYear()}-${numConverter(date.getMonth() + 1 < 11 ? date.getMonth() + 1 : 0)}-${numConverter(date.getDate())}T${numConverter(date.getHours())}:${numConverter(date.getMinutes())}:${numConverter(date.getSeconds())}`;
 
     queryMap.set("q", queryText);
-    queryMap.set("language", language);
+    queryMap.set("language", lang);
     queryMap.set("from", stringDate);
+
+    console.log("lang : " + lang);
 
     let queryString = createQuery(QueryType.EVERYTHING, queryMap);
 
     await queryCall("GET", queryString).then(value => {
         let jsonValue = JSON.parse(value);
 
-        console.log(jsonValue.articles.length);
         let searchBarResult = document.getElementById("search-result");
 
         if(searchBarResult.innerHTML !== null) searchBarResult.innerHTML = "";
 
-        let totalArticle = document.createElement('div');
-        let textNode = document.createTextNode(`Searched ${jsonValue.totalResults} articles`);
-        totalArticle.style.marginLeft = "7%";
-        totalArticle.style.marginTop = "2%";
-        totalArticle.style.color = "grey";
+        if(jsonValue.status === "error"){
+            let alertDiv = document.createElement('div');
+            alertDiv.classList.add("centerItem");
+            alertDiv.classList.add("alert-container");
+            alertDiv.style.marginTop = "5%";
+            alertDiv.style.marginLeft = "25%";
+            alertDiv.style.padding = "10px";
+            alertDiv.style.maxWidth = "50%";
+            alertDiv.style.textAlign = "center";
+            let textNode = document.createTextNode(jsonValue.message);
+            alertDiv.appendChild(textNode);
+            searchBarResult.appendChild(alertDiv);
+            return;
+        } else if   (jsonValue.status === "ok") {
+                let totalArticle = document.createElement('div');
+                let textNode = document.createTextNode(`Searched ${jsonValue.totalResults} articles`);
+                totalArticle.style.marginLeft = "7%";
+                totalArticle.style.marginTop = "2%";
+                totalArticle.style.color = "grey";
 
-        totalArticle.appendChild(textNode);
-        totalArticle.classList.add("margin-bottom");
+                totalArticle.appendChild(textNode);
+                totalArticle.classList.add("margin-bottom");
 
-        searchBarResult.appendChild(totalArticle);
+                searchBarResult.appendChild(totalArticle);
 
-        if(jsonValue.articles.length === 0) returnEmpty(searchBarResult, queryMap.get("q"));
-        jsonValue.articles.map((article, index) => {
-                createSearchedNews(searchBarResult, article, index);
-        })
-
+                if(jsonValue.articles.length === 0) returnEmpty(searchBarResult, queryMap.get("q"));
+                jsonValue.articles.map((article, index) => {
+                    createSearchedNews(searchBarResult, article, index);
+                 })
+            }
         }
     )
 };
@@ -146,7 +164,6 @@ const dateString = (publishedAt) => {
     } else if(dateDiff.getMonth() > 1){
         timeString = `${dateDiff.getMonth()} Months ago`
     } else if(dateDiff.getDate() > 7){
-        console.log(dateDiff.getDate());
         timeString = `${Math.floor(dateDiff.getDate()/7)} Weeks ago`
     } else if(dateDiff.getDate() > 1) {
         timeString = `${dateDiff.getDate()} Days ago`
@@ -172,6 +189,24 @@ window.addEventListener('keydown', (e) => {
 
 document.getElementById("logo").addEventListener("click", () => {
     window.location.href = "/NewsFetcher/index.html";
+});
+let lang_en = document.getElementById("en-search");
+let lang_de = document.getElementById("de-search");
+
+lang_en.addEventListener('click', () => {
+   sessionStorage.setItem("lang", "en");
+   lang = "en";
+   lang_en.classList.add("language-button-active");
+   lang_de.classList.remove("language-button-active");
+   getNewsFromSearching();
+});
+
+lang_de.addEventListener('click', () => {
+    sessionStorage.setItem("lang", "de");
+    lang = "de";
+    lang_de.classList.add("language-button-active");
+    lang_en.classList.remove("language-button-active");
+    getNewsFromSearching();
 });
 
 const scrollHandler = () => {
