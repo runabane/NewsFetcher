@@ -1,4 +1,4 @@
-# News Fetcher project
+# News Fetcher
 
 ## Einleitung
 
@@ -18,12 +18,21 @@ Daher ist die Sprachenänderung für beide Seite gilt. Das News wird von letzte 
 - Webstorm IDE  
 - [Github](https://github.com/runabane/NewsFetcher)
 
+## Deploy in local
+
+- Offnen terminal
+- Gehe zu code ordner
+- python -m SimpleHTTPServer
+- Offnen das Localhost
+
+
 ## API
 
 - [News Api](https://newsapi.org/)
 
 #### @ Fransiskus Xaverius Nicklaus Widjaja
 
-Bei Fragen wendest du jederzeit gerne an untere Information  
+Bei Fragen wendest du jederzeit gerne an untere Information    
+
 Email: nicklaus.widjaja@gmail.com  
 Handy: 0173 4254 359  

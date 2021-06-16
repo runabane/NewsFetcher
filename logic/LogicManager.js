@@ -105,7 +105,7 @@ let submitForm = document.getElementById("submit-button");
 if(submitForm !== null){
     submitForm.addEventListener("click", () => {
         sessionStorage.setItem("input-value", document.getElementById("input-home").value);
-        window.location.href = "/NewsFetcher/Pages/SearchPage.html";
+        window.location.href = "/Pages/SearchPage.html";
     });
 }
 
@@ -113,7 +113,7 @@ window.addEventListener('keydown', (e) => {
     if(e.key === "Enter"){
         e.preventDefault();
         sessionStorage.setItem("input-value", document.getElementById("input-home").value);
-        window.location.href = "/NewsFetcher/Pages/SearchPage.html";
+        window.location.href = "/Pages/SearchPage.html";
     }
 });
 

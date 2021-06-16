@@ -188,7 +188,7 @@ window.addEventListener('keydown', (e) => {
 });
 
 document.getElementById("logo").addEventListener("click", () => {
-    window.location.href = "/NewsFetcher/index.html";
+    window.location.href = "../index.html";
 });
 let lang_en = document.getElementById("en-search");
 let lang_de = document.getElementById("de-search");
