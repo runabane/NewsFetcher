@@ -2,7 +2,7 @@
 
 ## Einleitung
 
-Das Webapp ist funktioniert wie "Google News" und benutze ein third party API als Quelle.
+Das Webapp funktioniert wie "Google News" und benutze ein third party API als Quelle.
 Das App ist in 2 Seite Homepage ud Searchpage unterteilt. Das Homepage zeigt das Trending News. Nach das
 Enter Tasten gedrückt, kommt in der Search Page. Das Page zeigt das gesuchte Nachricht nach Sprache.
 Die Sprache kann man in beiden Seite auswählen und das Auswahl wird in Session Storage gespeichert.
