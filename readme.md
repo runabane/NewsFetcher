@@ -21,7 +21,7 @@ Daher ist die Sprachenänderung für beide Seite gilt. Das News wird von letzte 
 ## Deploy in local
 
 - Offnen terminal
-- Gehe zu code ordner
+- In terminal gehe zu code ordner
 - python -m SimpleHTTPServer
 - Offnen das Localhost
 
